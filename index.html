@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário de Dados</title>
+<style>
+    /* Estilos gerais */
+    body {
+        background-image: url('https://scontent.fcwb2-3.fna.fbcdn.net/v/t39.30808-6/353596140_6545832258802229_8803766148216626044_n.png?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=5hNXCwhKIYcAX8JVUdR&_nc_ht=scontent.fcwb2-3.fna&oh=00_AfArOknYcLedS0b-t9tUHdsc_LSI_OulSXZaYjTCuK70jQ&oe=660977CB');
+        background-size: 1520px auto;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #dd1d1dde;
+        color: #61f10e;
+        margin: 0;
+        padding: 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto para destacá-lo */
+        -webkit-text-stroke: 1px #070707; /* Adiciona uma borda branca ao texto */
+        text-stroke: 1px #fff; /* Adiciona uma borda branca ao texto */
+        
+    }
+    .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+        text-align: center; /* Centralizar conteúdo */
+    }
+    h1 {
+        margin-bottom: 10px;
+    }
+    /* Estilos para abas */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #faf7f7;
+        border-radius: 5px;
+        text-align: center; /* Centralizar botões */
+    }
+    .tab button {
+        background-color: #51eb0a;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+    }
+    .tab button:hover {
+        background-color: #ddd;
+    }
+    .tab button.active {
+        background-color: #ccc;
+    }
+    .tabcontent {
+        display: none;
+        padding: 20px;
+        border-top: none;
+        text-align: left; /* Ajustar o texto do formulário à esquerda */
+        position: relative;
+        animation: fade 0.10s ease;
+    }
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    /* Estilos para os formulários */
+    label {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Fonte BubbleGum ou uma fonte sans-serif genérica */
+        font-weight: bold; /* Peso da fonte negrito para maior destaque */
+        display: block;
+        margin-bottom: 20px;
+        color: #00ff15; /* Cor azul escura para o texto */
+        font-size: 20px; /* Tamanho da fonte */
+        text-shadow: 1px 1px 2px rgb(17, 17, 17); /* Adiciona sombra ao texto para destacá-lo */
+        -webkit-text-stroke: 1px #070707; /* Adiciona uma borda branca ao texto */
+        text-stroke: 2px #fff; /* Adiciona uma borda branca ao texto */
+    }
+    
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        background-color: rgb(12, 165, 20);
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button[type="submit"]:hover {
+        background-color: #ffffff;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Atualização da forma de Pagamento</h1>
+        <!-- Abas -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'credito')">Cartão de Crédito</button>
+            <button class="tablinks" onclick="openTab(event, 'debito')">Cartão de Débito</button>
+            <button class="tablinks" onclick="openTab(event, 'sicoob')">Banco Sicoob</button>
+        </div>
+        
+        <!-- Conteúdo das abas -->
+        <div id="credito" class="tabcontent">
+            <h2 style="text-align: center;">Cartão de Crédito</h2>
+            <form id="creditoForm">
+                <label for="nomeCartao">Nome do Cartão:</label>
+                <input type="text" id="nomeCartao" required>
+                
+                <label for="bandeiraCartao">Selecione a Bandeira:</label>
+                <select id="bandeiraCartao">
+                    <option value="none">Selecione uma opção</option>
+                    <option value="mastercard">Mastercard</option>
+                    <option value="visa">Visa</option>
+                    <option value="elo">Elo</option>
+                    <option value="nubank">Nubank</option>
+                </select>
+                
+                <label for="validadeCartao">Data de Validade:</label>
+                <input type="text" id="validadeCartao">
+                
+                <label for="codigoCartao">Código de Segurança:</label>
+                <input type="text" id="codigoCartao">
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        
+        <div id="debito" class="tabcontent">
+            <h2 style="text-align: center;">Cartão de Débito</h2>
+            <form id="debitoForm">
+                <label for="nomeCartaoDebito">Nome do Cartão:</label>
+                <input type="text" id="nomeCartaoDebito" required>
+                
+                <label for="bancoDebito">Selecione o Banco:</label>
+                <select id="bancoDebito">
+                    <option value="none">Selecione uma opção</option>
+                    <option value="itau">Itaú</option>
+                    <option value="c6">C6</option>
+                    <option value="bradesco">Bradesco</option>
+                    <option value="nubank">Nubank</option>
+                    <option value="inter">Inter</option>
+                    <option value="caixa">Caixa</option>
+                    <option value="bb">Banco do Brasil</option>
+                    </select>
+                    <label for="validadeCartaoDebito">Data de Validade:</label>
+                    <input type="text" id="validadeCartaoDebito">
+                    
+                    <label for="codigoCartaoDebito">Código de Segurança:</label>
+                    <input type="text" id="codigoCartaoDebito">
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            
+            <div id="sicoob" class="tabcontent">
+                <h2 style="text-align: center;">Banco Sicoob</h2>
+                <form id="sicoobForm">
+                    <label for="agenciaSicoob">Número da Agência:</label>
+                    <input type="text" id="agenciaSicoob" required>
+                    
+                    <label for="contaSicoob">Número da Conta:</label>
+                    <input type="text" id="contaSicoob" required>
+                    
+                    <label for="digitoVerificador">Dígito Verificador:</label>
+                    <input type="text" id="digitoVerificador" requI
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+        
+        <script>
+            // Função para alternar entre as abas
+            function openTab(evt, tabName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(tabName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        </script>
+</body>
+</html>
